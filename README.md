@@ -1,4 +1,4 @@
-# Dockerfile vs Jib vs Pack vs native image: which is the best image builder method
+# Dockerfile vs Jib vs Pack vs native image: choosing the best image builder method
 
 Nowadays, Docker is the standard tool to create and run containers across platforms. The traditional way to build a Docker container is built into the docker tool and uses a sequence of special instructions usually in a file named Dockerfile to compile the source code and assemble the "layers" of a container image.
 
