@@ -3,3 +3,5 @@ HELP.md
 .idea
 out/
 .tmp/
+/*.iml
+/target
