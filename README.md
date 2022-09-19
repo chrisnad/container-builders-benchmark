@@ -22,15 +22,15 @@ Docker and Kubernetes can only send signals to the process that has PID 1 inside
 
 In the context of containers, PIDs and Linux signals create two problems to consider.
 
-- **Problem 1**: How the Linux kernel handles signals 
-  - Signal handlers aren't automatically registered for PID 1, meaning that SIGTERM or SIGINT will have no effect by default. Hence, we must kill processes by using SIGKILL, preventing any graceful shutdown. Depending on our app, using SIGKILL can result in user-facing errors, interrupted writes (for data stores), or unwanted alerts in our monitoring system.
-- **Problem 2**: How classic init systems handle orphaned processes 
-  - Classic init systems such as systemd are also used to remove (reap) orphaned, zombie processes. Orphaned processes—processes whose parents have died—are reattached to the process that has PID 1, which should reap them when they die. A normal init system does that. But in a container, this responsibility falls on whatever process has PID 1. If that process doesn't properly handle the reaping, we risk running out of memory or some other resource.
+1) How the Linux kernel handles signals:
+   Signal handlers aren't automatically registered for PID 1, meaning that SIGTERM or SIGINT will have no effect by default. Hence, we must kill processes by using SIGKILL, preventing any graceful shutdown. Depending on our app, using SIGKILL can result in user-facing errors, interrupted writes (for data stores), or unwanted alerts in our monitoring system.
+2) How classic init systems handle orphaned processes:
+   Classic init systems such as systemd are also used to remove (reap) orphaned, zombie processes. Orphaned processes—processes whose parents have died—are reattached to the process that has PID 1, which should reap them when they die. A normal init system does that. But in a container, this responsibility falls on whatever process has PID 1. If that process doesn't properly handle the reaping, we risk running out of memory or some other resource.
 
-Solutions:
-1) Launch the process with the CMD and/or ENTRYPOINT instructions in our Dockerfile.
-2) Enable process namespace sharing for a Pod, then Kubernetes will use a single process namespace for all the containers in that Pod. The Kubernetes Pod infrastructure container becomes PID 1 and automatically reaps orphaned processes.
-3) Use an init system such as `tini`, which is created especially for containers.
+Solution (either one of the following approaches):
+- Launch the process with the CMD and/or ENTRYPOINT instructions in our Dockerfile. 
+- Enable process namespace sharing for a Pod, then Kubernetes will use a single process namespace for all the containers in that Pod. The Kubernetes Pod infrastructure container becomes PID 1 and automatically reaps orphaned processes. 
+- Use an init system such as `tini`, which is created especially for containers.
 
 ### 3. Optimizing for the Docker build cache
 
@@ -44,3 +44,5 @@ Also, if a build step relies on any kind of cache stored on the local file syste
 
 
 ## Best practices for operating containers
+
+TODO
