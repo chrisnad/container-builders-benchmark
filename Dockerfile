@@ -3,7 +3,7 @@ FROM eclipse-temurin@sha256:1b8a5c3f4dd3c1ece138bd0d011aa708cc0448be48b037af38f5
 WORKDIR /app
 COPY . /app
 
-RUN ./mvnw install
+RUN ./mvnw compile jar:jar
 
 FROM eclipse-temurin@sha256:1b8a5c3f4dd3c1ece138bd0d011aa708cc0448be48b037af38f577416aa85744
 
