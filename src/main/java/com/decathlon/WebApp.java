@@ -1,4 +1,4 @@
-package com.google;
+package com.decathlon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

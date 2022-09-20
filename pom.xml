@@ -10,10 +10,10 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.google</groupId>
-    <artifactId>sample-java-mvn</artifactId>
+    <groupId>com.decathlon</groupId>
+    <artifactId>WebApp</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
         <java.version>17</java.version>
