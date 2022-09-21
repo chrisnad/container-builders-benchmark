@@ -19,37 +19,9 @@ services:
       - '-Xmx64m'
     ports:
       - "8081:8080"
-  webapp-native:
-    image: webapp:native
-#    restart:
-    mem_limit: 128m
-    memswap_limit: 128m
-    cpu_count: 4
-    cpu_percent: 100
-    cpus: 4
-    container_name: webapp-native
-    command:
-      - '-Xms64m'
-      - '-Xmx64m'
-    ports:
-      - "8082:8080"
-  webapp-native-distroless:
-    image: webapp:native-distroless
-#    restart: never
-    mem_limit: 128m
-    memswap_limit: 128m
-    cpu_count: 4
-    cpu_percent: 100
-    cpus: 4
-    container_name: webapp-native-distroless
-    command:
-      - '-Xms64m'
-      - '-Xmx64m'
-    ports:
-      - "8084:8080"
   webapp-jib:
     image: webapp:jib
-#    restart: always
+#    restart:
     mem_limit: 256m
     memswap_limit: 256m
     cpu_count: 4
@@ -57,8 +29,48 @@ services:
     cpus: 4
     container_name: webapp-jib
     command:
-      - "-jar"
-      - "app.jar"
+      - '-Xms64m'
+      - '-Xmx64m'
+    ports:
+      - "8082:8080"
+  webapp-cnb:
+    image: webapp:cnb
+    #    restart:
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpu_count: 4
+    cpu_percent: 100
+    cpus: 4
+    container_name: webapp-cnb
+    command:
+      - '-Xms64m'
+      - '-Xmx64m'
+    ports:
+      - "8083:8080"
+  webapp-native-cnb:
+    image: webapp:native-cnb
+    #    restart:
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpu_count: 4
+    cpu_percent: 100
+    cpus: 4
+    container_name: webapp-native-cnb
+    command:
+      - '-Xms64m'
+      - '-Xmx64m'
+    ports:
+      - "8084:8080"
+  webapp-jar2native:
+    image: webapp:jar2native
+    #    restart:
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpu_count: 4
+    cpu_percent: 100
+    cpus: 4
+    container_name: webapp-jar2native
+    command:
       - '-Xms64m'
       - '-Xmx64m'
     ports:
