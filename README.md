@@ -15,7 +15,7 @@ Run the native application:
 target/webapp
 ```
 
-Build Container:
+Build Image:
 ```
 docker build -t webapp:native .
 ```
