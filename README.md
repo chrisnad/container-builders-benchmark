@@ -1,23 +1,8 @@
-# Native image (with Native Build Tools)
+# Native Build Packs Image
 
-System Requirements:
-- Install a GraalVM native-image distribution (example with SDKMAN: `sdk install java 22.1.0.r17-grl`)
-- Run `gu install native-image` to bring in the native-image extensions to the JDK
-
-
-Build the native application:
+Build the native application image:
 ```
-./mvnw -Pnative -DskipTests package
-```
-
-Run the native application:
-```
-target/webapp
-```
-
-Build Image:
-```
-docker build -t webapp:native .
+./mvnw spring-boot:build-image
 ```
 
 Run Locally with Docker:
