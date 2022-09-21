@@ -62,7 +62,6 @@
                         <buildpacks>
                             <buildpack>gcr.io/paketo-buildpacks/java-native-image:7.19.0</buildpack>
                         </buildpacks>
-                        <imageName>webapp</imageName>
                         <tags>
                             <tag>native-cnb</tag>
                         </tags>
