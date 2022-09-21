@@ -5,12 +5,12 @@ Run Locally (with jdk):
 ./mvnw spring-boot:run
 ```
 
-Build Docker Container:
+Build Docker Image:
 ```
-./mvnw compile jib:dockerBuild -Dimage=container-builders-benchmark:jib
+./mvnw compile jib:dockerBuild -Dimage=webapp:jib
 ```
 
 Run Locally with Docker:
 ```
-docker run -it -ePORT=8080 -p8080:8080 container-builders-benchmark:jib
+docker run -it -ePORT=8080 -p8080:8080 webapp:jib
 ```
