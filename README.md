@@ -17,10 +17,10 @@ target/webapp
 
 Build Container:
 ```
-docker build -t webapp:spring-native .
+docker build -t webapp:native .
 ```
 
 Run Locally with Docker:
 ```
-docker run -it -ePORT=8080 -p8080:8080 webapp:spring-native
+docker run -it -ePORT=8080 -p8080:8080 webapp:native
 ```
