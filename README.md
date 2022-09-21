@@ -1,16 +1,11 @@
-# Docker image
+# Native image
 
-Run Locally (with jdk):
+Build Docker Image:
 ```
-./mvnw spring-boot:run
-```
-
-Build Docker Container:
-```
-docker build -t container-builders-benchmark:graalvm .
+docker build -t webapp:graalvm .
 ```
 
 Run Locally with Docker:
 ```
-docker run -it -ePORT=8080 -p8080:8080 container-builders-benchmark:graalvm
+docker run -it -ePORT=8080 -p8080:8080 webapp:graalvm
 ```
