@@ -12,15 +12,16 @@ services:
     cpus: 4
     container_name: webapp-jdk
     command:
+      - "java"
       - "-jar"
-      - "app.jar"
+      - "/server.jar"
       - '-Xms64m'
       - '-Xmx64m'
     ports:
       - "8081:8080"
   webapp-native:
     image: webapp:native
-#    restart: 
+#    restart:
     mem_limit: 128m
     memswap_limit: 128m
     cpu_count: 4
