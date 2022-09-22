@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/graalvm-ce:java17-21.3.0 as builder
+FROM ghcr.io/graalvm/graalvm-ce:java11-21.1.0 as builder
 
 WORKDIR /app
 COPY . /app
@@ -10,7 +10,7 @@ RUN gu install native-image
 ARG RESULT_LIB="/staticlibs"
 
 RUN mkdir ${RESULT_LIB} && \
-    curl -L -o musl.tar.gz https://musl.libc.org/releases/musl-1.2.3.tar.gz && \
+    curl -L -o musl.tar.gz https://musl.libc.org/releases/musl-1.2.1.tar.gz && \
     mkdir musl && tar -xvzf musl.tar.gz -C musl --strip-components 1 && cd musl && \
     ./configure --disable-shared --prefix=${RESULT_LIB} && \
     make && make install && \
@@ -31,25 +31,21 @@ RUN rpm -iv xz.rpm
 RUN curl -L -o upx-3.96-amd64_linux.tar.xz https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz
 RUN tar -xvf upx-3.96-amd64_linux.tar.xz
 
-RUN ./mvnw install
+RUN ./mvnw package
 
 RUN native-image \
   --static \
   --libc=musl \
   --no-fallback \
+  --no-server \
   --install-exit-handlers \
-  --report-unsupported-elements-at-runtime \
-  -H:IncludeResources=".*" \
-  -H:+PrintClassInitialization \
   -H:Name=webapp \
-  -H:+ReportExceptionStackTraces \
-  -cp /app/target/*.jar \
-  com.decathlon.WebApp
+  -jar /app/target/*.jar
 
-RUN upx-3.96-amd64_linux/upx -7 /app/webapp
+RUN upx-3.96-amd64_linux/upx -7 /app/webapp-1.0.0-SNAPSHOT
 
 FROM scratch
 
-COPY --from=builder /app/webapp /webapp
+COPY --from=builder /app/webapp-1.0.0-SNAPSHOT /webapp
 
 ENTRYPOINT ["/webapp"]

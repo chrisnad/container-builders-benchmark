@@ -15,9 +15,7 @@ public class WebApp {
 
     @RequestMapping("/")
     public String index() {
-        return """
-                    Hello Tech-Day-Lille!
-               """;
+        return "Hello Tech-Day-Lille!";
     }
 
 }
