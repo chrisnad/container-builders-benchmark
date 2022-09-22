@@ -14,7 +14,7 @@ services:
     command:
       - "java"
       - "-jar"
-      - "/server.jar"
+      - "/webapp.jar"
       - '-Xms64m'
       - '-Xmx64m'
     ports:
