@@ -11,7 +11,7 @@ docker run -it -ePORT=8080 -p8080:8080 webapp:native
 ```
 You can also use directly the pack CLI to turn a Spring Boot executable JAR built with `AOT generation` into an optimized container image:
 ```
-./mvn package
+./mvnw package
 ```
 then
 ```
