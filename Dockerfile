@@ -31,7 +31,7 @@ RUN rpm -iv xz.rpm
 RUN curl -L -o upx-3.96-amd64_linux.tar.xz https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz
 RUN tar -xvf upx-3.96-amd64_linux.tar.xz
 
-RUN ./mvnw package
+RUN ./mvnw clean package
 
 RUN native-image \
   --static \
