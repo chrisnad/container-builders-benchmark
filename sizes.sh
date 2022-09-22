@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-JAR_SIZE=`ls -lh target/webapp-1.0.0-SNAPSHOT.jar | awk '{print $5}' | sed 's/M//'`
-NATIVE_EXECUTABLE_SIZE=`ls -lh target/webapp | awk '{print $5}' | sed 's/M//'`
+JAR_SIZE=`ls -la target/webapp-1.0.0-SNAPSHOT.jar | awk '{print $5}' | sed 's/M//'`
+NATIVE_EXECUTABLE_SIZE=`ls -la target/webapp | awk '{print $5}' | sed 's/M//'`
 JDK_IMG_SIZE=`docker inspect -f "{{ .Size }}" webapp:jdk | numfmt --to=si | sed 's/.$//'`
 JIB_IMG_SIZE=`docker inspect -f "{{ .Size }}" webapp:jib | numfmt --to=si | sed 's/.$//'`
 CNB_IMG_SIZE=`docker inspect -f "{{ .Size }}" webapp:cnb | numfmt --to=si | sed 's/.$//'`
@@ -12,12 +12,12 @@ JAR2NATIVE_IMG_SIZE=`docker inspect -f "{{ .Size }}" webapp:jar2native | numfmt 
 
 # Chart of the image sizes
 echo ".JAR                ${JAR_SIZE}
-      Native-Exe          ${NATIVE_EXECUTABLE_SIZE}
-      JDK-Image           ${JDK_IMG_SIZE}
-      JIB-Image           ${JIB_IMG_SIZE}
-      CNB-Image           ${CNB_IMG_SIZE}
-      Native-Image        ${NATIVE_IMG_SIZE}
-      Native-CNB-Image    ${NATIVE_CNB_IMG_SIZE}
-      JAR-to-Native-Image ${JAR2NATIVE_IMG_SIZE}" \
-      | termgraph --title "Container Size" --width 60 --color {green,} --suffix " MB"
+    Native-Exe          ${NATIVE_EXECUTABLE_SIZE}
+    JDK-Image           ${JDK_IMG_SIZE}
+    JIB-Image           ${JIB_IMG_SIZE}
+    CNB-Image           ${CNB_IMG_SIZE}
+    Native-Image        ${NATIVE_IMG_SIZE}
+    Native-CNB-Image    ${NATIVE_CNB_IMG_SIZE}
+    JAR-to-Native-Image ${JAR2NATIVE_IMG_SIZE}" \
+    | termgraph --title "Container Size" --width 60 --color {green,} --suffix " MB"
 
