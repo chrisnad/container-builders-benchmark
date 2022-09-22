@@ -92,6 +92,8 @@
                         <configuration>
                             <imageName>webapp</imageName>
                             <buildArgs>
+                                <!-- Mostly static -->
+                                <buildArg>-H:+StaticExecutableWithDynamicLibC</buildArg>
                                 <buildArg>-H:+ReportExceptionStackTraces</buildArg>
                             </buildArgs>
                         </configuration>
