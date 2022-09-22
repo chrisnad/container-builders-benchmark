@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Create files for storing the stats
+mkdir -p stats
+cd stats || exit
 rm -f JDK_95.txt JDK_ALL_95.txt JIB_95.txt JIB_ALL_95.txt CNB_95.txt CNB_ALL_95.txt NI_95.txt NI_ALL_95.txt NI_CNB_95.txt NI_CNB_ALL_95.txt J2NI_95.txt J2NI_ALL_95.txt
 touch JDK_95.txt JDK_ALL_95.txt JIB_95.txt JIB_ALL_95.txt CNB_95.txt CNB_ALL_95.txt NI_95.txt NI_ALL_95.txt NI_CNB_95.txt NI_CNB_ALL_95.txt J2NI_95.txt J2NI_ALL_95.txt
 
@@ -50,3 +52,5 @@ echo "JDK-Container           ${JDK_REQS}
       Native-CNB-Container    ${NI_CNB_REQS}
       JAR-to-Native-Container ${J2NI_REQS}" \
       | termgraph --title "Requests  / seconds" --width 60 --color {green,} --suffix " req / s"
+
+cd ..

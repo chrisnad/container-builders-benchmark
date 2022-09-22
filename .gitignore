@@ -5,3 +5,4 @@ out/
 .tmp/
 /*.iml
 /target
+/stats
