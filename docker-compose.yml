@@ -47,6 +47,20 @@ services:
       - '-Xmx64m'
     ports:
       - "8083:8080"
+  webapp-native:
+    image: webapp:native
+    #    restart:
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpu_count: 4
+    cpu_percent: 100
+    cpus: 4
+    container_name: webapp-native
+    command:
+      - '-Xms64m'
+      - '-Xmx64m'
+    ports:
+      - "8084:8080"
   webapp-native-cnb:
     image: webapp:native-cnb
     #    restart:
@@ -60,7 +74,7 @@ services:
       - '-Xms64m'
       - '-Xmx64m'
     ports:
-      - "8084:8080"
+      - "8085:8080"
   webapp-jar2native:
     image: webapp:jar2native
     #    restart:
@@ -74,7 +88,7 @@ services:
       - '-Xms64m'
       - '-Xmx64m'
     ports:
-      - "8085:8080"
+      - "8086:8080"
 
 
 
