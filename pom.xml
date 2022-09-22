@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.decathlon</groupId>
-    <artifactId>WebApp</artifactId>
+    <artifactId>webapp</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
