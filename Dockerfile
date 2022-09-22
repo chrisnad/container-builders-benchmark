@@ -25,21 +25,24 @@ RUN curl -L -o zlib.tar.gz https://zlib.net/zlib-1.2.12.tar.gz && \
     make && make install
 #END PRE-REQUISITES FOR STATIC NATIVE IMAGES FOR GRAAL
 
-RUN curl -L -o xz.rpm https://www.rpmfind.net/linux/centos/8-stream/BaseOS/x86_64/os/Packages/xz-5.2.4-3.el8.x86_64.rpm
+RUN curl -L -o xz.rpm https://vault.centos.org/centos/8/BaseOS/x86_64/os/Packages/xz-5.2.4-3.el8.x86_64.rpm
 RUN rpm -iv xz.rpm
 
 RUN curl -L -o upx-3.96-amd64_linux.tar.xz https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz
 RUN tar -xvf upx-3.96-amd64_linux.tar.xz
 
-RUN ./mvnw compile jar:jar
+RUN ./mvnw install
 
 RUN native-image \
   --static \
   --libc=musl \
   --no-fallback \
-  --no-server \
   --install-exit-handlers \
+  --report-unsupported-elements-at-runtime \
+  -H:IncludeResources=".*" \
+  -H:+PrintClassInitialization \
   -H:Name=webapp \
+  -H:+ReportExceptionStackTraces \
   -cp /app/target/*.jar \
   com.decathlon.WebApp
 
