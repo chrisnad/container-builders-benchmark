@@ -7,7 +7,7 @@ Build the native application image:
 
 Run Locally with Docker:
 ```
-docker run -it -ePORT=8080 -p8080:8080 webapp:native
+docker run -it -ePORT=8080 -p8080:8080 webapp:native-cnb
 ```
 You can also use directly the pack CLI to turn a Spring Boot executable JAR built with `AOT generation` into an optimized container image:
 ```
