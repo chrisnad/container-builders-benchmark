@@ -1,7 +1,10 @@
 # Native image (with Native Build Tools)
 
 System Requirements:
-- Install a GraalVM native-image distribution (example with SDKMAN: `sdk install java 22.1.0.r17-grl`)
+- Install and use a GraalVM native-image distribution
+  - for example with SDKMAN: 
+    - `sdk install java 22.1.0.r17-grl`
+    - `sdk use 22.1.0.r17-grl`
 - Run `gu install native-image` to bring in the native-image extensions to the JDK
 
 
