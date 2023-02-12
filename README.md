@@ -2,12 +2,12 @@
 
 Run locally with jvm:
 ```
-./mvnw compile exec:java
+./mvnw spring-boot:run
 ```
 
 Build Docker Container:
 ```
-pack build --builder=gcr.io/buildpacks/builder:v1 -eGOOGLE_RUNTIME_VERSION=17 webapp:cnb
+pack build --builder=gcr.io/buildpacks/builder:v1 -eGOOGLE_RUNTIME_VERSION=19 webapp:cnb
 ```
 
 Run Locally with Docker:
